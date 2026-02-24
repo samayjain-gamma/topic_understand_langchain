@@ -1,0 +1,50 @@
+from app.utils.exception import CustomException
+from app.utils.logger import logger
+from app.config import get_llm
+from app.prompts import subquestion_prompt
+
+import re
+
+llm = get_llm()
+
+
+def generate_subquestions(topic: str) -> list[str]:
+    """
+    Generate exactly 3 subquestions for a given topic
+     
+    Args:
+        topic (str): The main topic input by the user.
+    
+    Returns:
+        list[str]: List of 3 sub-questions.
+    
+    Raises:
+        CustomException: If parsing fails or less than 3 sub-questions found.
+    """
+
+
+    try:
+        prompt = subquestion_prompt.format(topic = topic)
+        response = llm.invoke(prompt)
+        text = response.content.strip()
+
+        matches = re.findall(r"\d\.\s*(.+?)(?=\d\.|$)", text, flags= re.DOTALL)
+
+        if len(matches) != 3:
+            logger.error(f"Expected 3 subquestions, got {len(matches)} -> {matches}")
+            raise(CustomException(f"Expected 3 subquestions, got {len(matches)} -> {matches}"))
+        
+        questions = [q.strip().replace("\n", " ") for q in matches]
+
+        logger.info(f"Sub-questions generated successfully: {questions}")
+        return questions
+
+    except Exception as e:
+        logger.error("Failed to generate subquestion")
+        raise CustomException(e)
+    
+
+if __name__ == "__main__":
+    topic = "Global warming"
+    questions = generate_subquestions(topic)
+    print(questions)
