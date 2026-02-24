@@ -1,0 +1,23 @@
+[project]
+requires-python = ">=3.11,<3.12"
+name = "topic-understanding"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+dependencies = [
+    "langchain>=1.2.10",
+    "langchain-community>=0.4.1",
+    "langchain-ollama>=1.0.1",
+]
+
+[dependency-groups]
+dev = [
+    "black>=26.1.0",
+    "flake8>=7.3.0",
+    "ipykernel>=7.2.0",
+    "isort>=8.0.0",
+    "mypy>=1.19.1",
+    "notebook>=7.5.3",
+]
+
+
