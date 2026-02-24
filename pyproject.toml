@@ -1,3 +1,7 @@
+[build-system]
+requires = ["setuptools>=65.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
 [project]
 requires-python = ">=3.11,<3.12"
 name = "topic-understanding"
@@ -8,9 +12,10 @@ dependencies = [
     "langchain>=1.2.10",
     "langchain-community>=0.4.1",
     "langchain-ollama>=1.0.1",
+    "pre-commit>=4.5.1",
 ]
 
-[dependency-groups]
+[project.optional-dependencies]
 dev = [
     "black>=26.1.0",
     "flake8>=7.3.0",
@@ -20,4 +25,6 @@ dev = [
     "notebook>=7.5.3",
 ]
 
-
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["app*"]

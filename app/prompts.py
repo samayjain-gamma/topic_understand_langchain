@@ -16,7 +16,7 @@ Topic: {topic}
 answer_prompt = """
 Provide a detailed, structured, analytical answer to the following question:
 
-Question: {How has the food industry evolved over the past decade in terms of consumer preferences and dietary trends?}
+Question: {question}
 
 Instructions:
 - Minimum 150 words

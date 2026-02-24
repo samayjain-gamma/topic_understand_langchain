@@ -19,7 +19,6 @@ def generate_answer(question: str) -> str:
 
     try:
         prompt = answer_prompt.format(question = question)
-        stream_handler = Stream
 
         response = llm.invoke(prompt)
         answer = response.content.strip()

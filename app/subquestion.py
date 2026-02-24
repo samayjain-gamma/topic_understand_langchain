@@ -48,3 +48,4 @@ if __name__ == "__main__":
     topic = "Global warming"
     questions = generate_subquestions(topic)
     print(questions)
+    

@@ -7,11 +7,11 @@ from app.utils.logger import logger
 def get_llm():
     """
         Initialize and return the instance of Ollama LLm model
-        Model -> tinyllama        
+        Model -> phi        
     """
 
     try:
-        model_name = os.getenv("OLLAMA_MODEL", "tinyllama")
+        model_name = os.getenv("OLLAMA_MODEL", "phi")
 
         llm = ChatOllama(
             model = model_name,
