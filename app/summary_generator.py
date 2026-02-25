@@ -5,7 +5,6 @@ from app.utils.exception  import CustomException
 from app.utils.streaming import StreamHandler
 
 stream_handler = StreamHandler()
-
 llm = get_llm(stream=True, callbacks= [stream_handler])
 
 
@@ -32,8 +31,6 @@ def generate_summary(topic:str, subquestions: list[str], answers: list[str]) -> 
             topic=topic,
             subquestions_and_answers=sub_q_a_text.strip()
         )
-
-        logger.info(f"summary generat")
 
         response = llm.invoke(prompt)
         summary = response.content.strip()

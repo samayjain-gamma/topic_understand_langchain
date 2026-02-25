@@ -15,10 +15,10 @@ def main():
             print("Topic cannot be empty")
             return
     
-        subquestions = generate_subquestions(topic=topic)
         print(f"Generated subquestions -> \n")
-        for i , ques in enumerate(subquestions, 1):
-            print(f"{i}. {ques}")
+        subquestions = generate_subquestions(topic=topic)
+        # for i , ques in enumerate(subquestions, 1):
+        #     print(f"{i}. {ques}")
         print(f"\n")
 
 
@@ -58,9 +58,9 @@ def main():
 
 
         print("\nGenerating final summary...\n")
-        report = generate_summary(topic, subquestions, answers)
         print("\n===== FINAL REPORT =====\n")
-        print(report)
+        report = generate_summary(topic, subquestions, answers)
+        # print(report)
 
 
 
@@ -71,4 +71,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-    

@@ -20,6 +20,7 @@ def generate_answer(question: str, stream_to_terminal: bool = True) -> str:
     """
 
     try:
+        logger.info(f"Entered into try block of generate_answer for question {question}")
         prompt = answer_prompt.format(question = question)
         response = llm.invoke(prompt)
         answer = response.content.strip()

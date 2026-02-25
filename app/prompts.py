@@ -5,7 +5,7 @@ Given the topic below, generate exactly 3 important, non-overlapping sub-questio
 
 Instructions:
 - Number them 1., 2., 3.
-- Do not give expaination
+- Do not give explaination
 - Do not write extra text
 - Each sub-question should cover a different aspect of the topic
 
@@ -19,7 +19,7 @@ Provide a detailed, structured, analytical answer to the following question:
 Question: {question}
 
 Instructions:
-- Minimum 150 words
+- Maximum 100 words
 - Be specific and avoid generic statements
 - Use clear structure, examples, or reasoning where possible
 - Focus on answering the question directly
@@ -33,7 +33,6 @@ Evaluate the following answer based on these criteria:
 1. Is the answer at least 150 words?
 2. Is it directly relevant to the question?
 3. Is it specific and analytical, not generic?
-
 Return only one word: PASS or FAIL
 
 Question: {question}

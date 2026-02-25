@@ -2,13 +2,16 @@ from app.utils.exception import CustomException
 from app.utils.logger import logger
 from app.config import get_llm
 from app.prompts import subquestion_prompt
+from app.utils.streaming import StreamHandler
 
 import re
 
-llm = get_llm()
+
+stream_handler = StreamHandler(prefix="\n")
+llm = get_llm(stream = True, callbacks=[stream_handler])
 
 
-def generate_subquestions(topic: str) -> list[str]:
+def generate_subquestions(topic: str, stream_to_terminal: bool = True) -> list[str]:
     """
     Generate exactly 3 subquestions for a given topic
      
