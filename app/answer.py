@@ -2,11 +2,13 @@ from app.config import get_llm
 from app.prompts import answer_prompt
 from app.utils.exception import CustomException
 from app.utils.logger import logger
+from app.utils.streaming import StreamHandler
 
-llm = get_llm()
+stream_handler = StreamHandler(prefix="")
+llm = get_llm(stream = True, callbacks=[stream_handler])
 
 
-def generate_answer(question: str) -> str:
+def generate_answer(question: str, stream_to_terminal: bool = True) -> str:
     """
     Generate a detailed analytical answer to a single sub-question.
     
@@ -19,7 +21,6 @@ def generate_answer(question: str) -> str:
 
     try:
         prompt = answer_prompt.format(question = question)
-
         response = llm.invoke(prompt)
         answer = response.content.strip()
 
@@ -33,6 +34,6 @@ def generate_answer(question: str) -> str:
 
 
 if __name__ == "__main__":
-    test_question = "How do rising temperatures and extreme weather events affect crop productivity?"
+    test_question = "answer of 2+2"
     answer_text = generate_answer(test_question)
     print(answer_text)

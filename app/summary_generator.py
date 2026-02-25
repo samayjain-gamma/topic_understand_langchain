@@ -2,8 +2,11 @@ from app.config import get_llm
 from app.prompts import summary_prompt
 from app.utils.logger import logger
 from app.utils.exception  import CustomException
+from app.utils.streaming import StreamHandler
 
-llm = get_llm()
+stream_handler = StreamHandler()
+
+llm = get_llm(stream=True, callbacks= [stream_handler])
 
 
 def generate_summary(topic:str, subquestions: list[str], answers: list[str]) -> str:

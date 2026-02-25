@@ -1,10 +1,9 @@
 import os
-from langchain_community.chat_models import ChatOllama
+from langchain_ollama import ChatOllama
 from app.utils.exception import CustomException 
 from app.utils.logger import logger
 
-
-def get_llm():
+def get_llm(stream: bool = False, callbacks=None):
     """
         Initialize and return the instance of Ollama LLm model
         Model -> phi        
@@ -16,8 +15,12 @@ def get_llm():
         llm = ChatOllama(
             model = model_name,
             temperature =  0.2,
-            num_predict= 512    # Limit response length      
+            num_predict= 512,
+            streaming = stream,
+            callbacks= callbacks
         )
+
+
 
         logger.info(f"LLM initialized successfully with modekl {model_name}")
 

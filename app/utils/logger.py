@@ -13,8 +13,7 @@ class JsonFormatter(logging.Formatter):
             "lineno": record.lineno,
             "message": record.getMessage(),
         }
-        return json.dumps(log_record)
-
+        return json.dumps(log_record, indent=4)
 
 def get_logger(name: str = "app_logger"):
     log_dir = "logs"

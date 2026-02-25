@@ -1945,7 +1945,7 @@ wheels = [
 [[package]]
 name = "topic-understanding"
 version = "0.1.0"
-source = { virtual = "." }
+source = { editable = "." }
 dependencies = [
     { name = "langchain" },
     { name = "langchain-community" },
@@ -1953,7 +1953,7 @@ dependencies = [
     { name = "pre-commit" },
 ]
 
-[package.dev-dependencies]
+[package.optional-dependencies]
 dev = [
     { name = "black" },
     { name = "flake8" },
@@ -1965,21 +1965,18 @@ dev = [
 
 [package.metadata]
 requires-dist = [
-    { name = "langchain", specifier = ">=1.2.10" },
+    { name = "black", marker = "extra == 'dev'", specifier = ">=26.1.0" },
+    { name = "flake8", marker = "extra == 'dev'", specifier = ">=7.3.0" },
+    { name = "ipykernel", marker = "extra == 'dev'", specifier = ">=7.2.0" },
+    { name = "isort", marker = "extra == 'dev'", specifier = ">=8.0.0" },
+    { name = "langchain", specifier = "==1.2.10" },
     { name = "langchain-community", specifier = ">=0.4.1" },
     { name = "langchain-ollama", specifier = ">=1.0.1" },
+    { name = "mypy", marker = "extra == 'dev'", specifier = ">=1.19.1" },
+    { name = "notebook", marker = "extra == 'dev'", specifier = ">=7.5.3" },
     { name = "pre-commit", specifier = ">=4.5.1" },
 ]
-
-[package.metadata.requires-dev]
-dev = [
-    { name = "black", specifier = ">=26.1.0" },
-    { name = "flake8", specifier = ">=7.3.0" },
-    { name = "ipykernel", specifier = ">=7.2.0" },
-    { name = "isort", specifier = ">=8.0.0" },
-    { name = "mypy", specifier = ">=1.19.1" },
-    { name = "notebook", specifier = ">=7.5.3" },
-]
+provides-extras = ["dev"]
 
 [[package]]
 name = "tornado"

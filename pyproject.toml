@@ -9,7 +9,7 @@ version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
 dependencies = [
-    "langchain>=1.2.10",
+    "langchain==1.2.10",
     "langchain-community>=0.4.1",
     "langchain-ollama>=1.0.1",
     "pre-commit>=4.5.1",

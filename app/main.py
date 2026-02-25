@@ -26,30 +26,34 @@ def main():
 
         for i , question in enumerate(subquestions, 1):
             print(f"\n Answering question {i} : {question}")
-            retries = 0
 
-            while retries < MAX_RETRIES:
-                try:
-                    answer = generate_answer(question=question)
-                    verdict = evaluate_answer(question=question, answer=answer)
+            answer = generate_answer(question = question)
 
-                    if verdict == "PASS":
-                        print(answer)
-                        answers.append(answer)
-                        break
-                    else:
-                        retries += 1
-                        print(f"\n[Retry {retries}/{MAX_RETRIES}] Answer did not pass evaluation.\n")
-                        logger.warning(f"Retrying question: {question} ({retries}/{MAX_RETRIES})")
 
-                except Exception as e:
-                    retries += 1
-                    print(f"\n[Retry {retries}/{MAX_RETRIES}] Error: {e}\n")
-                    logger.error(f"Error during answer generation for question '{question}': {e}")
 
-            if retries > MAX_RETRIES:
-                print(f"\n[Skipped] Could not generate a satisfactory answer for question: {question}\n")
-                answers.append("Answer could not be generated satisfactorily.")
+            # retries = 0
+            # while retries < MAX_RETRIES:
+            #     try:
+            #         answer = generate_answer(question=question, stream_to_terminal=True)
+            #         verdict = evaluate_answer(question=question, answer=answer)
+
+            #         if verdict == "PASS":
+            #             print(answer)
+            #             answers.append(answer)
+            #             break
+            #         else:
+            #             retries += 1
+            #             print(f"\n[Retry {retries}/{MAX_RETRIES}] Answer did not pass evaluation.\n")
+            #             logger.warning(f"Retrying question: {question} ({retries}/{MAX_RETRIES})")
+
+            #     except Exception as e:
+            #         retries += 1
+            #         print(f"\n[Retry {retries}/{MAX_RETRIES}] Error: {e}\n")
+            #         logger.error(f"Error during answer generation for question '{question}': {e}")
+
+            # if retries > MAX_RETRIES:
+            #     print(f"\n[Skipped] Could not generate a satisfactory answer for question: {question}\n")
+            #     answers.append("Answer could not be generated satisfactorily.")
     
 
 
