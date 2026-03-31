@@ -28,3 +28,8 @@ dev = [
 [tool.setuptools.packages.find]
 where = ["."]
 include = ["app*"]
+
+[dependency-groups]
+dev = [
+    "pre-commit>=4.5.1",
+]

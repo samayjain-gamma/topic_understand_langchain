@@ -15,6 +15,7 @@ class JsonFormatter(logging.Formatter):
         }
         return json.dumps(log_record, indent=4)
 
+
 def get_logger(name: str = "app_logger"):
     log_dir = "logs"
     os.makedirs(log_dir, exist_ok=True)
